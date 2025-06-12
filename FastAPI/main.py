@@ -63,11 +63,11 @@ async def upload_file(file: UploadFile = File(...), model_name : str = None):   
     if not model_name:
         raise HTTPException(status_code=404, detail="Model not selected")
     else:
-        modle_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "models\\"+model_name+"_tilt.joblib")
+        modle_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "models/"+model_name+"_tilt.joblib")
         model_tilt = joblib.load(modle_path)
-        modle_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "models\\"+model_name+"_turn.joblib")
+        modle_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "models/"+model_name+"_turn.joblib")
         model_turn = joblib.load(modle_path)
-        modle_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "models\\"+model_name+"_ud.joblib")
+        modle_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "models/"+model_name+"_ud.joblib")
         model_ud = joblib.load(modle_path)
     degree_tilt = model_tilt.predict([t_some])[0]
     degree_turn = model_turn.predict([t_some])[0]
